@@ -7,7 +7,7 @@ public class BlueRobo extends Contender {
     public BlueRobo() {
         this.name = "Blue";
         this.age = 4;
-        this.damage = 30;
+        this.damage = 10;
     }
 
 }
