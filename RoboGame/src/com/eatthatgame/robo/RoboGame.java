@@ -5,21 +5,21 @@ import com.eatthatgame.robo.contenders.*;
 public class RoboGame {
 
     public static void main(String[] args) {
-        RedRobo redRobo = new RedRobo();
-        BlueRobo blueRobo = new BlueRobo();
+        Contender contenderA = new Adam();
+        Contender contenderB = new JayGundam();
 
-        System.out.println(redRobo.name + " vs. " + blueRobo.name);
+        System.out.println(contenderA.name + " vs. " + contenderB.name);
 
-        while((redRobo.health > 0) && (blueRobo.health > 0)) {
-            redRobo.health -= blueRobo.damage;
-            blueRobo.health -= redRobo.damage;
-            System.out.println("RedRobo Health: " + redRobo.health);
-            System.out.println("BlueRobo Health: " + blueRobo.health);
+        while((contenderA.health > 0) && (contenderB.health > 0)) {
+            contenderA.health -= contenderB.damage;
+            contenderB.health -= contenderA.damage;
+            System.out.println(contenderA.name + " health: " + contenderA.health);
+            System.out.println(contenderB.name + " health: " + contenderB.health);
         }
-        if(redRobo.health > blueRobo.health) {
-            System.out.println(redRobo.name + "Robo wins!");
+        if(contenderA.health > contenderB.health) {
+            System.out.println(contenderA.name + "Robo wins!");
         } else {
-            System.out.println(blueRobo.name + "Robo wins!");
+            System.out.println(contenderB.name + "Robo wins!");
         }
     }
 
