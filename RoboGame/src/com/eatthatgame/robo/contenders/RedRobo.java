@@ -5,7 +5,7 @@ import com.eatthatgame.robo.Contender;
 public class RedRobo extends Contender {
 
     public RedRobo() {
-        this.name = "Red";
+        this.name = "Boo Boo";
         this.age = 4;
         this.damage = 20;
     }

@@ -11,8 +11,35 @@ public class RoboGame {
         Contender contender;
         contender = new Adam();
         contenders.add(contender);
+        contender = new BlueRobo();
+        contenders.add(contender);
+        contender = new HugoRobo();
+        contenders.add(contender);
         contender = new JayGundam();
-        contenders.add(contender);    
+        contenders.add(contender);
+        contender = new John();
+        contenders.add(contender);
+        contender = new NathanRobo();
+        contenders.add(contender);
+        contender = new RedRobo();
+        contenders.add(contender);
+        contender = new Tania();
+        contenders.add(contender);
+        
+        int extraContendersNeeded = contenders.size() % 2;
+        
+        if(extraContendersNeeded > 0) {
+            contender = new Contender();
+            contender.name = "Unpaid Extra";
+            contenders.add(contender);
+        }
+        
+        int contenderCount = 1;
+        System.out.println("Contenders entering the league today are:");
+        for(Contender c:contenders) {
+            System.out.println(contenderCount + ". " + c.name);
+            contenderCount++;
+        }
 
         League league = new League(contenders);
         
