@@ -5,4 +5,9 @@ public class Contender {
     protected int age = 1;
     protected int damage = 10;
     protected int health = 100;
+    
+    public int attack(){
+        return damage;
+    }
+    
 }

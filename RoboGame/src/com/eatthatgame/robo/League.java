@@ -15,8 +15,8 @@ public class League {
         
         int roundCount = 0;
         while((a.health > 0) && (b.health > 0)) {
-            a.health -= b.damage;
-            b.health -= a.damage;
+            a.health -= b.attack();
+            b.health -= a.attack();
             
             roundCount++;
             System.out.println("Round: " + roundCount);
