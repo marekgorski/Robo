@@ -7,7 +7,7 @@ public class RedRobo extends Contender {
     public RedRobo() {
         this.name = "Boo Boo";
         this.age = 4;
-        this.damage = 20;
+        this.attackPower = 20;
     }
 
 }

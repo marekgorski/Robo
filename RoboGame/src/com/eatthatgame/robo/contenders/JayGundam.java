@@ -7,7 +7,7 @@ public class JayGundam extends Contender {
     public JayGundam() {
         this.name = "Freedom";
         this.age = 1;
-        this.damage = 50; // DEATH BEAM!!!! Available for kids ages 8+
+        this.attackPower = 50; // DEATH BEAM!!!! Available for kids ages 8+
     }
 
 }

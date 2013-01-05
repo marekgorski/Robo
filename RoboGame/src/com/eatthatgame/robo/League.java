@@ -14,17 +14,18 @@ public class League {
         System.out.println("FIGHT!");
         
         int roundCount = 0;
-        while((a.health > 0) && (b.health > 0)) {
-            a.health -= b.attack();
-            b.health -= a.attack();
+        while(a.alive() && b.alive()) {
+            a.hit(b.attack() - a.defend());
+            //a.health -= b.attack() - a.defend();
+            //b.health -= a.attack() - b.defend();
             
             roundCount++;
             System.out.println("Round: " + roundCount);
 
-            System.out.println(a.name + " health: " + a.health);
-            System.out.println(b.name + " health: " + b.health);
+            System.out.println(a.name + " health: " + a.getHealth());
+            System.out.println(b.name + " health: " + b.getHealth());
         }
-        if(a.health > b.health) {
+        if(a.alive()) {
             System.out.println(a.name + " wins! (in " + roundCount + " rounds)");
         } else {
             System.out.println(b.name + " wins! (in " + roundCount + " rounds)");

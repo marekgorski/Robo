@@ -9,6 +9,6 @@ public class John extends Contender
     {
         this.name = "Blitz";
         this.age = 6;
-        this.damage = 25; // HOOK CITY *****, HOOK CITY!
+        this.attackPower = 25; // HOOK CITY *****, HOOK CITY!
     }
 }

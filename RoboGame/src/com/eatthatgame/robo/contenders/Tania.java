@@ -7,7 +7,7 @@ public class Tania extends Contender {
     public Tania() {
         this.name = "Tania";
         this.age = 10;
-        this.damage = 30;
+        this.attackPower = 30;
     }
 
 }

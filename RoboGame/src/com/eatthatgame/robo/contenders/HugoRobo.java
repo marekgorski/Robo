@@ -7,7 +7,7 @@ public class HugoRobo extends Contender {
     public HugoRobo() {
         this.name = "Omega";
         this.age = 23;
-        this.damage = 9001; // over 9000!!
+        this.attackPower = 9001; // over 9000!!
     }
 
 }

@@ -7,7 +7,7 @@ public class Adam extends Contender {
     public Adam() {
         this.name = "Adam's";
         this.age = 1;
-        this.damage = 33;
+        this.attackPower = 33;
     }
 
 }
