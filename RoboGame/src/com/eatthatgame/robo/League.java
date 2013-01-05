@@ -16,8 +16,7 @@ public class League {
         int roundCount = 0;
         while(a.alive() && b.alive()) {
             a.hit(b.attack() - a.defend());
-            //a.health -= b.attack() - a.defend();
-            //b.health -= a.attack() - b.defend();
+            b.hit(a.attack() - a.defend());
             
             roundCount++;
             System.out.println("Round: " + roundCount);
@@ -27,8 +26,10 @@ public class League {
         }
         if(a.alive()) {
             System.out.println(a.name + " wins! (in " + roundCount + " rounds)");
-        } else {
+        } else if(b.alive()) {
             System.out.println(b.name + " wins! (in " + roundCount + " rounds)");
+        } else {
+            System.out.println("Mutual Annihilation, both contenders are dead after " + roundCount + " rounds)");
         }
     }
 }
