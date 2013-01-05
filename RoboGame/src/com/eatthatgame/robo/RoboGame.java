@@ -7,6 +7,13 @@ public class RoboGame {
 
     public static void main(String[] args) {
         
+        ArrayList<Contender> leagueContenders = getContenders();
+
+        League league = new League(leagueContenders);
+        
+    }
+
+    private static ArrayList<Contender> getContenders() {
         ArrayList<Contender> contenders = new ArrayList<Contender>();
         Contender contender;
         contender = new Adam();
@@ -40,9 +47,8 @@ public class RoboGame {
             System.out.println(contenderCount + ". " + c.name);
             contenderCount++;
         }
-
-        League league = new League(contenders);
         
+        return contenders;
     }
 
 }
