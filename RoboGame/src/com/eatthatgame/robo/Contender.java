@@ -41,7 +41,7 @@ public class Contender {
         return health;
     }
     
-    public void energyCheck(){
+    private void energyCheck(){
         energyDrain = (attackPower + defensePower)-MAX_ENERGY;
         System.out.println(name + " has " +
                            attackPower + " attackPower, " +
