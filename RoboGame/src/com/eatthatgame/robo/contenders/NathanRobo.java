@@ -26,7 +26,7 @@ public class NathanRobo extends Contender {
         }
         if( RoboHealth > 45 ) {
             System.out.println(name + " Attacks!");
-            attack = false;
+            attack = true;
             
         }
         } else {
