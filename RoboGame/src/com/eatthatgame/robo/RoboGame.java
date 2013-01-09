@@ -1,28 +1,61 @@
 package com.eatthatgame.robo;
 
 import com.eatthatgame.robo.contenders.*;
+import java.util.ArrayList;
 
 public class RoboGame {
 
     public static void main(String[] args) {
-        RedRobo redRobo = new RedRobo();
-        BlueRobo blueRobo = new BlueRobo();
+        
+        ArrayList<Contender> leagueContenders = getContenders();
 
-        System.out.println(redRobo.name + " vs. " + blueRobo.name);
+        League league = new League(leagueContenders);
+        
+    }
 
-        while((redRobo.health > 0) && (blueRobo.health > 0)) {
-            redRobo.health -= blueRobo.damage;
-            blueRobo.health -= redRobo.damage;
-            System.out.println("RedRobo Health: " + redRobo.health);
-            System.out.println("BlueRobo Health: " + blueRobo.health);
+    private static ArrayList<Contender> getContenders() {
+        ArrayList<Contender> contenders = new ArrayList<Contender>();
+        Contender contender;
+        contender = new Adam();
+        contenders.add(contender);
+        contender = new BooBoo();
+        contenders.add(contender);
+        contender = new HugoRobo();
+        contenders.add(contender);
+        contender = new JayGundam();
+        contenders.add(contender);
+        contender = new John();
+        contenders.add(contender);
+        contender = new NathanRobo();
+        contenders.add(contender);
+        contender = new Tania();
+        contenders.add(contender);
+        contender = new YogiBear();
+        contenders.add(contender);
+        
+        int extraContendersNeeded = contenders.size() % 2;
+        
+        if(extraContendersNeeded > 0) {
+            contender = new Contender();
+            contender.name = "Unpaid Extra";
+            contenders.add(contender);
+        } else if (contenders.size() == 0) {
+            contender = new Contender();
+            contender.name = "Bob";
+            contenders.add(contender);
+            contender = new Contender();
+            contender.name = "Joe";
+            contenders.add(contender);
         }
-        if(redRobo.health > blueRobo.health) {
-            System.out.println(redRobo.name + "Robo wins!");
-        } else {
-            System.out.println(blueRobo.name + "Robo wins!");
+        
+        int contenderCount = 1;
+        System.out.println("Contenders entering the league today are:");
+        for(Contender c:contenders) {
+            System.out.println(contenderCount + ". " + c.name);
+            contenderCount++;
         }
+        
+        return contenders;
     }
 
 }
-
-
