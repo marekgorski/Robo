@@ -16,21 +16,21 @@ public class NathanRobo extends Contender {
         int RoboHealth = getHealth();
         
         if( RoboHealth == 100) {
-            System.out.println(name + " Attacks!");
+            //System.out.println(name + " Attacks!");
             attack = true;
            
             if( RoboHealth > 75) {
-                System.out.println(name + " Defends!");
+                //System.out.println(name + " Defends!");
                 attack = true;
 
             }
             if( RoboHealth > 45 ) {
-                System.out.println(name + " Attacks!");
+                //System.out.println(name + " Attacks!");
                 attack = true;
 
             }
         } else {
-            System.out.println(name + " Defends!");
+            //System.out.println(name + " Defends!");
             attack = false;
         }
     }
