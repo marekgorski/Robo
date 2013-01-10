@@ -13,7 +13,7 @@ public class YogiBear extends Contender {
 
     @Override
     public void AI(){
-        System.out.println(name + " attacks!");
+        //System.out.println(name + " attacks!");
         this.attack = true;
     }
     

@@ -8,8 +8,17 @@ public class RoboGame {
     public static void main(String[] args) {
         
         ArrayList<Contender> leagueContenders = getContenders();
+        
+        CareerMode careerMode = new CareerMode(leagueContenders);
+        careerMode.matchUp();
+        
+        //LastManStanding lastManStanding = new LastManStanding(leagueContenders);
+        //lastManStanding.matchUp();
+        
+        //RandomMatchUp randomMatchUp = new RandomMatchUp(leagueContenders);
+        //randomMatchUp.matchUp();
+        
 
-        LastManStanding league = new LastManStanding(leagueContenders);
         
     }
 
@@ -39,7 +48,7 @@ public class RoboGame {
             contender = new Contender();
             contender.name = "Unpaid Extra";
             contenders.add(contender);
-        } else if (contenders.size() == 0) {
+        } else if (contenders.isEmpty()) {
             contender = new Contender();
             contender.name = "Bob";
             contenders.add(contender);

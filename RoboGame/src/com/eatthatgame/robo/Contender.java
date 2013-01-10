@@ -12,6 +12,10 @@ public class Contender {
     protected int defensePower = 10;
     protected boolean attack = false;
     
+    public int totalWon = 0;
+    public int totalDrawn = 0;
+    public int totalLost = 0;
+    
     public int attack(){
         return attackPower;
     }
@@ -21,11 +25,11 @@ public class Contender {
     }
     
     public void hit(int damage) {
-        System.out.println(name + " 1. Health before energyCheck:" + health);
+        //System.out.println(name + " 1. Health before energyCheck:" + health);
         energyCheck();
-        System.out.println(name + " 2. Health after energyCheck:" + health);
+        //System.out.println(name + " 2. Health after energyCheck:" + health);
         health = health - damage;
-        System.out.println(name + " 3. Health after damage:" + health);
+        //System.out.println(name + " 3. Health after damage:" + health);
     }
     
     
@@ -41,13 +45,17 @@ public class Contender {
         return health;
     }
     
+    public void setHealth(int value){
+        health = value;
+    }
+    
     private void energyCheck(){
         energyDrain = (attackPower + defensePower)-MAX_ENERGY;
-        System.out.println(name + " has " +
-                           attackPower + " attackPower, " +
-                           defensePower + " defensePower, " +
-                           energyDrain + " excess energyDrain over the " +
-                           MAX_ENERGY + " maximum energy available");
+//        System.out.println(name + " has " +
+//                           attackPower + " attackPower, " +
+//                           defensePower + " defensePower, " +
+//                           energyDrain + " excess energyDrain over the " +
+//                           MAX_ENERGY + " maximum energy available");
         health = health - energyDrain;
         if(health > MAX_HEALTH) {
             health = MAX_HEALTH;
@@ -56,10 +64,10 @@ public class Contender {
     
     public void AI(){
         if(attack) {
-            System.out.println(name + " defends!");
+            //System.out.println(name + " defends!");
             attack = false;
         } else {
-            System.out.println(name + " attacks!");
+            //System.out.println(name + " attacks!");
             attack = true;
         }
     }
