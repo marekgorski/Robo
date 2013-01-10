@@ -9,7 +9,7 @@ public class RoboGame {
         
         ArrayList<Contender> leagueContenders = getContenders();
 
-        League league = new League(leagueContenders);
+        LastManStanding league = new LastManStanding(leagueContenders);
         
     }
 
@@ -22,11 +22,11 @@ public class RoboGame {
         contenders.add(contender);
         contender = new HugoRobo();
         contenders.add(contender);
-        contender = new JayGundam();
+        contender = new JayGundam(); // 3
         contenders.add(contender);
         contender = new John();
         contenders.add(contender);
-        contender = new NathanRobo();
+        contender = new NathanRobo(); // 5
         contenders.add(contender);
         contender = new Tania();
         contenders.add(contender);
