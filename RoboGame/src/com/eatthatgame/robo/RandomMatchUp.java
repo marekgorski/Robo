@@ -3,16 +3,39 @@ package com.eatthatgame.robo;
 import java.util.ArrayList;
 
 public class RandomMatchUp {
-    public RandomMatchUp(ArrayList contenders) {
-        int randomContenderID;
-        randomContenderID = (int) (Math.random()*contenders.size());
-        Contender a = (Contender) contenders.remove(randomContenderID); // set to 7 for Yogi Bear
-        randomContenderID = (int) (Math.random()*contenders.size());
-        Contender b = (Contender) contenders.remove(randomContenderID); // then set to 1 for Boo Boo
-            
-        System.out.println("Contender A: " + a.name + " vs. Contender B: " + b.name);
-        System.out.println("FIGHT!");
-        
+    int currentContenderID;
+    ArrayList<Contender> contenders;
+    Contender a;
+    Contender b;
+    
+    public RandomMatchUp(ArrayList<Contender> contendersList) {
+        contenders = new ArrayList<Contender>(contendersList);
+    }
+    
+    public void matchUp(){
+        System.out.println("==================================================");
+        System.out.println("=======Random Match Up Mode Match Up Begins=======");
+        System.out.println("==================================================");
+        if(contenders.isEmpty()) {
+            System.out.println("All contenders are exhausted");
+        } else if(contenders.size()>1) {
+            currentContenderID = (int) (Math.random()*contenders.size());
+            a = (Contender) contenders.remove(currentContenderID); // set to 7 for Yogi Bear
+            currentContenderID = (int) (Math.random()*contenders.size());
+            b = (Contender) contenders.remove(currentContenderID); // then set to 1 for Boo Boo
+
+            System.out.println("Contender A: " + a.name + " vs. Contender B: " + b.name);
+            System.out.println("FIGHT!");
+
+            battle();
+        } else if(contenders.size()==1) {
+            a = (Contender) contenders.remove(0);
+            System.out.println("Contender A: " + a.name + " has no opponents");
+        }
+    }
+    
+    public void battle(){
+                
         int roundCount = 0;
         int MAX_ROUNDS = 200;
         while(a.alive() && b.alive() && roundCount < MAX_ROUNDS) {
