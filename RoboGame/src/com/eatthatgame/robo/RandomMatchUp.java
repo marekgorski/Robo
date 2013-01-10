@@ -2,8 +2,8 @@ package com.eatthatgame.robo;
 
 import java.util.ArrayList;
 
-public class League {
-    public League(ArrayList contenders) {
+public class RandomMatchUp {
+    public RandomMatchUp(ArrayList contenders) {
         int randomContenderID;
         randomContenderID = (int) (Math.random()*contenders.size());
         Contender a = (Contender) contenders.remove(randomContenderID); // set to 7 for Yogi Bear
