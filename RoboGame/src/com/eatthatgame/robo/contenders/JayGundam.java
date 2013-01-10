@@ -20,7 +20,7 @@ public class JayGundam extends Contender {
             System.out.println(name + " attacks!");
             attack = true;
         }
-        else if (getHealth() < 40 && getHealth() > 20)
+        else if (getHealth() < 40 && getHealth() > 6)
         {
             System.out.println(name + " defends!");
             attack = false;
