@@ -15,20 +15,26 @@ public class JayGundam extends Contender {
     @Override
     public void AI()
     {
-        if(getHealth() > 40)
+        if(getHealth() > 60)
         {
-            //System.out.println(name + " attacks!");
             attack = true;
         }
-        else if (getHealth() < 40 && getHealth() > 6)
+        else if (getHealth() < 60 && getHealth() > 50)
         {
-            //System.out.println(name + " defends!");
             attack = false;
         }
-        else if (getHealth() < 5 && getHealth() > 1)
+        else if (getHealth() < 50 && getHealth() > 30)
         {
-            //System.out.println(name + " is self destructing!!!");
-            attackPower = 40;
+            attack = true;
+        }
+        else if (getHealth() < 30 && getHealth() > 10)
+        {
+            attack = false;
+        }
+        else if (getHealth() < 10 && getHealth() > 1)
+        {
+            //Last stand mode, activated in occurence of extremely low health.
+            attackPower = 30;
             attack = true;
         }
     }
