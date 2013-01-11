@@ -17,17 +17,17 @@ public class JayGundam extends Contender {
     {
         if(getHealth() > 40)
         {
-            System.out.println(name + " attacks!");
+            //System.out.println(name + " attacks!");
             attack = true;
         }
         else if (getHealth() < 40 && getHealth() > 6)
         {
-            System.out.println(name + " defends!");
+            //System.out.println(name + " defends!");
             attack = false;
         }
         else if (getHealth() < 5 && getHealth() > 1)
         {
-            System.out.println(name + " is self destructing!!!");
+            //System.out.println(name + " is self destructing!!!");
             attackPower = 40;
             attack = true;
         }
