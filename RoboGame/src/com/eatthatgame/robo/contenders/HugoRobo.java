@@ -18,51 +18,45 @@ public class HugoRobo extends Contender {
         {
             this.attackPower = 60;
             this.defensePower = 0;
-            System.out.println(name + " attacks!" + "\n" +
-                    "attackPower: " + this.attackPower + 
-                    "health: " + this.getHealth());
+//            System.out.println(name + " attacks!" + "\n" +
+//                    "attackPower: " + this.attackPower + " " +
+//                    "health: " + this.getHealth());
             attack = true;
         }
         else if (getHealth() >= 60 && getHealth() < 90)
         {
             this.attackPower = 30;
             this.defensePower = 0;
-            System.out.println(name + " attacks!" + "\n" +
-                    "attackPower: " + this.attackPower + 
-                    "health: " + this.getHealth());
+//            System.out.println(name + " attacks!" + "\n" +
+//                    "attackPower: " + this.attackPower + " " +
+//                    "health: " + this.getHealth());
             attack = true;
         }
         else if (getHealth() >= 50 && getHealth() < 60)
         {
             this.attackPower = 0;
             this.defensePower = 20;
-            System.out.println(name + " defends!" + "\n" +
-                    "defensePower: " + this.defensePower + 
-                    "health: " + this.getHealth());
+//            System.out.println(name + " defends!" + "\n" +
+//                    "defensePower: " + this.defensePower + " " +
+//                    "health: " + this.getHealth());
             attack = false;
         }
         else if (getHealth() >= 30 && getHealth() < 50)
         {
             this.attackPower = 0;
-            this.defensePower = 30;
-            System.out.println(name + " defends!" + "\n" +
-                    "defensePower: " + this.defensePower + 
-                    "health: " + this.getHealth());
+            this.defensePower = 20;
+//            System.out.println(name + " defends!" + "\n" +
+//                    "defensePower: " + this.defensePower + " " +
+//                    "health: " + this.getHealth());
             attack = false;
         }
-        else if (getHealth() >= 10 && getHealth() < 30)
+        else if (getHealth() >= 1 && getHealth() < 30)
         {
             this.attackPower = 0;
             this.defensePower = 30;
-            System.out.println(name + " defends!" + "\n" +
-                    "defensePower: " + this.defensePower + 
-                    "health: " + this.getHealth());            
-            attack = false;
-        }
-        else if (getHealth() >= 1 && getHealth() < 10)
-        {
-            this.attackPower = 0;
-            this.defensePower = 39;
+//            System.out.println(name + " defends!" + "\n" +
+//                    "defensePower: " + this.defensePower + " " +
+//                    "health: " + this.getHealth());            
             attack = false;
         }
     }
