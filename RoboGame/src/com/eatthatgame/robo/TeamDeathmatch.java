@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import javax.swing.*;
 import java.util.Random;
 
+/*
+ * This mode is all about matching 2 Contenders against 2 other Contender
+ * Once both Contenders on one team fall (run out of health) the other team wins
+ */
+
 public class TeamDeathmatch {
-    
-    public boolean getRandomBoolean() {
-    Random random = new Random();
-    return random.nextBoolean();
-}
-    
     
     public TeamDeathmatch(ArrayList contenders) {
         int randomContenderID;
@@ -113,4 +112,10 @@ public class TeamDeathmatch {
             }
         }
     }
+    
+    public boolean getRandomBoolean() {
+        Random random = new Random();
+        return random.nextBoolean();
+    }
+    
 }
