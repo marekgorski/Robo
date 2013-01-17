@@ -25,29 +25,32 @@ import java.util.ArrayList;
  * In final both team members will fight and the winner will be champ.
  */
 
-public class TaniaLastManStanding {
+public class TaniaLastManStanding extends Mode{
     
-    public TaniaLastManStanding(ArrayList contenders) {
-        int randomContenderID;
-        Contender[] redTeam;
-        Contender[] blueTeam;
-        Contender[] greenTeam;
-        Contender[] orangeTeam;
-        Contender[] semifinalTeam1;
-        Contender[] semifinalTeam2;
-        Contender[] finalTeam;
+    public TaniaLastManStanding(ArrayList<Contender> contendersList) {
+        super(contendersList);
+    }
+    
+    @Override
+    public void matchUp() {
         
-        redTeam  = new Contender[2];
-        blueTeam = new Contender[2];
-        greenTeam = new Contender[2];
-        orangeTeam = new Contender[2];
-        semifinalTeam1 = new Contender[2];
-        semifinalTeam2 = new Contender[2];
-        finalTeam = new Contender[2];        
+        team = new Team("Red Team");
+        teams.add(team);
+        team = new Team("Blue Team");
+        teams.add(team);
+        team = new Team("Green Team");
+        teams.add(team);
+        team = new Team("Orange Team");
+        teams.add(team);
+        team = new Team("Semi Final Team 1");
+        teams.add(team);
+        team = new Team("Semi Final Team 2");
+        teams.add(team);
+        team = new Team("Final Team");
+        teams.add(team);
         
-       
         randomContenderID = (int) (Math.random()*contenders.size());
-        Contender a = (Contender) contenders.remove(randomContenderID); // set to 7 for Yogi Bear
+        Contender a = (Contender) contenders.remove(randomContenderID);
         randomContenderID = (int) (Math.random()*contenders.size());
         Contender b = (Contender) contenders.remove(randomContenderID);
         randomContenderID = (int) (Math.random()*contenders.size());
@@ -55,7 +58,7 @@ public class TaniaLastManStanding {
         randomContenderID = (int) (Math.random()*contenders.size());
         Contender d = (Contender) contenders.remove(randomContenderID);
         randomContenderID = (int) (Math.random()*contenders.size());
-        Contender e = (Contender) contenders.remove(randomContenderID); // set to 7 for Yogi Bear
+        Contender e = (Contender) contenders.remove(randomContenderID);
         randomContenderID = (int) (Math.random()*contenders.size());
         Contender f = (Contender) contenders.remove(randomContenderID);
         randomContenderID = (int) (Math.random()*contenders.size());
@@ -64,126 +67,136 @@ public class TaniaLastManStanding {
         Contender h = (Contender) contenders.remove(randomContenderID);
         
               
-              
-        redTeam[0]    = a;
-        redTeam[1]    = b;
-        greenTeam[0]  = c;
-        greenTeam[1]  = d;
-        orangeTeam[0] = e;
-        orangeTeam[1] = f;
-        blueTeam[0]   = g;
-        blueTeam[1]   = h;
+        (teams.get(0)).add(a); // Red Team Contender 1
+        (teams.get(0)).add(b); // Red Team Contender 2
+        (teams.get(1)).add(c); // Green Team Contender 1
+        (teams.get(1)).add(d);
+        (teams.get(2)).add(e); // Orange Team Contender 1
+        (teams.get(2)).add(f);
+        (teams.get(3)).add(g); // Blue Team Contender 1
+        (teams.get(3)).add(h);
+           
+        for(int i = 0; i < teams.size(); i++) {
+            System.out.println((teams.get(i)).getName() + " : " + (teams.get(i)).show() );
+        }
+
+        System.out.println("Let The Fight Begin.............");
     
         
+        roundCount = 0;
+
+        Team A_Team = teams.get(0);
+        Team B_Team = teams.get(1);
         
-       System.out.println("Red Team: " + a.name + " and " + b.name);
-       System.out.println("greenTeam: " + c.name + " and " + d.name);
-       System.out.println("orangeTeam: " + e.name + " and " + f.name);
-       System.out.println("Blue Team: " + g.name + " and " + h.name);
-       System.out.println("Let The Fight Begin.............");
+        a = A_Team.member(0);
+        Contender a2 = A_Team.member(1);
+        b = B_Team.member(0);
+        Contender b2 = B_Team.member(1);
         
-        int roundCount = 0;
-        int MAX_ROUNDS = 200;
+        // TODO - change fight mechanic
+        // The fight mechanic needs allow a and a2 to attack b together
+        // the case for this would be when a2 beats b2 the next round
+        // a2 should be able to attack b to help a beat b
         
-        while(redTeam[0].alive() && redTeam[1].alive() && greenTeam[0].alive() && greenTeam[1].alive() && roundCount < MAX_ROUNDS) {
+        while(a.alive() && a2.alive() && b.alive() && b2.alive() && roundCount < MAX_ROUNDS) {
             
             roundCount++;
+            
             System.out.println("Round: " + roundCount);
             
-            redTeam[0].AI();
-            redTeam[1].AI();
-            greenTeam[0].AI();
-            greenTeam[1].AI();           
+            a.AI();
+            a2.AI();
+            b.AI();
+            b2.AI();
             
-            
-            
-            if(redTeam[0].attack && redTeam[1].attack){
-                if(greenTeam[0].attack && greenTeam[1].attack){
+            if(a.attack && a2.attack){
+                if(b.attack && b2.attack){
                     System.out.println("Both teams attack!");
-                    System.out.println(redTeam[0].name + " hits " + greenTeam[0].name + " for: " + redTeam[0].attack());
-                    System.out.println(redTeam[1].name + " hits " + greenTeam[1].name + " for: " + redTeam[1].attack());
-                    System.out.println(greenTeam[0].name + " hits " + redTeam[0].name + " for: " + greenTeam[0].attack());
-                    System.out.println(greenTeam[1].name + " hits " + redTeam[1].name + " for: " + greenTeam[1].attack());
-                    redTeam[0].hit(greenTeam[0].attack());
-                    redTeam[1].hit(greenTeam[1].attack());
-                    greenTeam[0].hit(redTeam[0].attack());
-                    greenTeam[1].hit(redTeam[1].attack());
+                    System.out.println(a.name + " hits " + b.name + " for: " + a.attack());
+                    System.out.println(a2.name + " hits " + b2.name + " for: " + a2.attack());
+                    System.out.println(b.name + " hits " + a.name + " for: " + b.attack());
+                    System.out.println(b2.name + " hits " + a2.name + " for: " + b2.attack());
+                    a.hit(b.attack());
+                    a2.hit(b2.attack());
+                    b.hit(a.attack());
+                    b2.hit(a2.attack());
                     
                 } else {
                     System.out.println("redTeam attacks and greenTeam defends");
-                    System.out.println(redTeam[0].name + " hits " + greenTeam[0].name + " for: " + (redTeam[0].attack()-greenTeam[0].defend()));
-                    System.out.println(redTeam[1].name + " hits " + greenTeam[1].name + " for: " + (redTeam[1].attack()-greenTeam[1].defend()));
-                    greenTeam[0].hit(redTeam[0].attack()-greenTeam[0].defend());
-                    greenTeam[1].hit(redTeam[1].attack()-greenTeam[1].defend());
-                    redTeam[0].hit(0);
-                    redTeam[1].hit(0);
+                    System.out.println(a.name + " hits " + b.name + " for: " + (a.attack()-b.defend()));
+                    System.out.println(a2.name + " hits " + b2.name + " for: " + (a2.attack()-b2.defend()));
+                    b.hit(a.attack()-b.defend());
+                    b2.hit(a2.attack()-b2.defend());
+                    a.hit(0);
+                    a2.hit(0);
                 }
             } else {
-                if(greenTeam[0].attack && greenTeam[1].attack){
-                    System.out.println("redTeam defends and greenTeam attacks");
-                    System.out.println(greenTeam[0].name + " hits " + redTeam[0].name + " for: " + (greenTeam[0].attack()-redTeam[0].defend()));
-                    System.out.println(greenTeam[1].name + " hits " + redTeam[1].name + " for: " + (greenTeam[1].attack()-redTeam[1].defend()));
-                    greenTeam[0].hit(0);
-                    greenTeam[1].hit(0);
-                    redTeam[0].hit(greenTeam[0].attack()-redTeam[0].defend());
-                    redTeam[1].hit(greenTeam[1].attack()-redTeam[1].defend());
+                if(b.attack && b2.attack){
+                    System.out.println("A Team defends and B Team attacks");
+                    System.out.println(b.name + " hits " + a.name + " for: " + (b.attack()-a.defend()));
+                    System.out.println(b2.name + " hits " + a2.name + " for: " + (b2.attack()-a2.defend()));
+                    b.hit(0);
+                    b2.hit(0);
+                    a.hit(b.attack()-a.defend());
+                    a2.hit(b2.attack()-a2.defend());
                 } else {
                     // both defend only energyCheck runs
-                    redTeam[0].hit(0);
-                    redTeam[1].hit(0);
-                    blueTeam[0].hit(0);
-                    blueTeam[1].hit(0);
-                    
+                    a.hit(0);
+                    a2.hit(0);
+                    b.hit(0);
+                    b2.hit(0);
                 }
             }
 
             System.out.println(a.name + " health: " + a.getHealth());
+            System.out.println(a2.name + " health: " + a2.getHealth());
             System.out.println(b.name + " health: " + b.getHealth());
-            System.out.println(c.name + " health: " + c.getHealth());
-            System.out.println(d.name + " health: " + d.getHealth());
+            System.out.println(b2.name + " health: " + b2.getHealth());
         }
         
         if(roundCount < MAX_ROUNDS) {
-            if(a.alive() && b.alive()) {
-                System.out.println( a.name + " and " + b.name+ " wins by K.O. (in " + roundCount + " rounds)");
+            if(a.alive() && a2.alive()) {
+                System.out.println( a.name + " and " + a2.name+ " wins by K.O. (in " + roundCount + " rounds)");
                 
-                semifinalTeam1[0]    = a;
-                semifinalTeam1[1]    = b;
-                System.out.println("semifinalTeam1: " + a.name + " and " + b.name);
+                (teams.get(4)).add(a);
+                (teams.get(4)).add(a2);
+                System.out.println("semifinalTeam1: " + a.name + " and " + a2.name);
                 
-            } else if(c.alive() && d.alive()) {
-                System.out.println(c.name + " and " + d.name+ " wins by K.O. (in " + roundCount + " rounds)");
+            } else if(b.alive() && b2.alive()) {
+                System.out.println(b.name + " and " + b2.name+ " wins by K.O. (in " + roundCount + " rounds)");
                 
-                semifinalTeam1[0]    = c;
-                semifinalTeam1[1]    = d;
-                System.out.println("semifinalTeam1: " + a.name + " and " + b.name);
-                
+                (teams.get(4)).add(b);
+                (teams.get(4)).add(b2);
+                System.out.println("semifinalTeam1: " + b.name + " and " + b2.name);              
                 
             } else {
                 System.out.println("Mutual Annihilation, both teams are dead after " + roundCount + " rounds)");
             }
         } else {
             System.out.println("=======MAX Rounds Reached=======");
-            if((a.getHealth()+b.getHealth()) >(c.getHealth()+d.getHealth()) ) {
-                System.out.println(a.name + " and " + b.name+ " wins by jury decision (in MAX " + roundCount + " rounds)");
+            if((a.getHealth()+a2.getHealth()) >(b.getHealth()+b2.getHealth()) ) {
+                System.out.println(a.name + " and " + a2.name+ " wins by jury decision (in MAX " + roundCount + " rounds)");
                 
-                semifinalTeam1[0]    = a;
-                semifinalTeam1[1]    = b;
-                System.out.println("semifinalTeam1: " + a.name + " and " + b.name);
+                (teams.get(4)).add(a);
+                (teams.get(4)).add(a2);
+                System.out.println("semifinalTeam1: " + a.name + " and " + a2.name);
                 
                 
             } else {
-                System.out.println(c.name + " and " + d.name+ " wins by jury decision (in MAX " + roundCount + " rounds)");
+                System.out.println(b.name + " and " + b2.name+ " wins by jury decision (in MAX " + roundCount + " rounds)");
                 
-                semifinalTeam1[0]    = a;
-                semifinalTeam1[1]    = b;
-                System.out.println("semifinalTeam1: " + a.name + " and " + b.name);
+                (teams.get(4)).add(b);
+                (teams.get(4)).add(b2);
+                System.out.println("semifinalTeam1: " + b.name + " and " + b2.name);
             }
             
-            // TODO - optimise code
-            // I did coding for redTeam fight against greenTeam.
-            // for blueTeam and orangeTeam its the same repetation of coding.
-            // how I can minimize the coding and I also want that the team fight will be randomly.
+            // TODO - optimise code more
+            // red and green teams are now just A_Team and B_Team
+            // this means any team can become A_Team or B_Team
+            // currently the red team is A_Team and green team is B_Team
+            // to test blueTeam and orangeTeam set them to be A_Team and B_Team
+            // to randomise which teams fight each other the actual "fight" code needs
+            // to be seperate from the "team match up" code which needs to be added
 
         }
     }

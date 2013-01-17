@@ -9,15 +9,19 @@ import java.util.ArrayList;
  */
 public class Mode {
     int currentContenderID;
+    int randomContenderID;
     ArrayList<Contender> contenders;
     ArrayList<Contender> opponents;
-    
+        
     protected int MAX_ROUNDS = 200;
     protected int roundCount = 0;
 
     Contender a;
     Contender b;
     
+    ArrayList<Team> teams;
+    Team team;
+
     /**
     * This constructor populates the contenders with the ArrayList passed into it
     * The constructor stores the list inside of contenders, copies it over to the opponents
@@ -29,6 +33,7 @@ public class Mode {
         currentContenderID = 0;
         contenders = new ArrayList<Contender>(contendersList);
         opponents = new ArrayList<Contender>(contenders);
+        teams = new ArrayList<Team>();
     }
 
     /**
@@ -60,10 +65,8 @@ public class Mode {
     * @author Jay
     * @author Hugo
     */
- public Contender getWinner() {
-        
+    public Contender getWinner() {
         Contender winner = contenders.get(0);
-        
                 for(int i=1; i<contenders.size(); i++) {
 
                 if(contenders.get(i).totalWon >= winner.totalWon) {
@@ -72,8 +75,77 @@ public class Mode {
                     // do nothing
                 }
         }
-        
         return winner;
+    }
+ 
+
+    /**
+    * This Team class allows you to put Contenders into teams
+    * it has methods to add team members, get team name
+    * return specific members as contenders, return as
+    * a String all the team member names and show the size of the team
+    * @author Mark
+    */
+    protected static class Team {
+
+        private ArrayList<Contender> members;
+        private String name;
+        
+        /**
+        * This constructor needs to be passed a String with the team name
+        */
+        public Team(String teamName) {
+            name = teamName;
+            members = new ArrayList<Contender>();
+        }
+        
+        /**
+        * This method allows you to add Contenders as members to the team
+        */
+        public void add(Contender member) {
+            members.add(member);
+        }
+        
+        /**
+        * This method returns a String with the team name
+        */
+        public String getName(){
+            return name;
+        }
+        
+        /**
+        * This method returns a specific Contender from the members
+        * as specified by the integer passed into the method
+        */
+        public Contender member(int index) {
+            // TODO add error handling to make sure the index is within bounds
+            return members.get(index);
+        }
+        
+        /**
+        * This method returns a String that contains all the names
+        * of the team members (Contenders) that are part of this team
+        */
+        public String show() {
+            String s = "";
+            int i;
+            for(i = 0; i < members.size(); i++) {
+                s += members.get(i).name;
+                if(i < (members.size()-2)) {
+                    s += ", ";
+                } else if(i == (members.size()-2)) {
+                    s += " and ";
+                }
+            }
+            return s;
+        }
+        
+        /**
+        * This method returns an integer that is the count of the team members
+        */
+        public int size() {
+            return members.size();
+        }
         
     }
 }
