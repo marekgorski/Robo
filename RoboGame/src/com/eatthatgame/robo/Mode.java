@@ -14,7 +14,9 @@ public class Mode {
 
     Contender a;
     Contender b;
-
+    
+    protected int roundCount = 0;
+    protected int MAX_ROUNDS = 200;
     
     /**
     * This constructor populates the contenders with the ArrayList passed into it
