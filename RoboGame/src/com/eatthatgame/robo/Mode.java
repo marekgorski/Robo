@@ -15,10 +15,8 @@ public class Mode {
     protected int MAX_ROUNDS = 200;
     protected int roundCount = 0;
 
-
     Contender a;
     Contender b;
-
     
     /**
     * This constructor populates the contenders with the ArrayList passed into it
@@ -59,6 +57,8 @@ public class Mode {
     * This method returns the winning Contender
     * it checks the totalWon values that each Contender has
     * based on which it selects the Contender with the highest value
+    * @author Jay
+    * @author Hugo
     */
  public Contender getWinner() {
         
@@ -74,7 +74,6 @@ public class Mode {
         }
         
         return winner;
-        // TODO - extend code to include all contenders - DONE
         
     }
 }
