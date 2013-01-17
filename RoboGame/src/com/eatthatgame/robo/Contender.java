@@ -3,7 +3,7 @@ package com.eatthatgame.robo;
 public class Contender {
     private int MAX_HEALTH = 100;
     private int health = MAX_HEALTH;
-    private int MAX_ENERGY = 40;
+    private int MAX_ENERGY = 50;
     private int energyDrain = 0;
     
     protected String name = "Contender";
@@ -69,6 +69,18 @@ public class Contender {
         } else {
             //System.out.println(name + " attacks!");
             attack = true;
+        }
+    }
+    public void AI(Contender opponent) {
+        if(getHealth() > opponent.getHealth()) {
+            attack = true;
+        } else {
+            attack = false;
+        }
+        if(opponent.name.equals("Omega")) {
+            attack = true;
+        } else {
+            attack = false;
         }
     }
 }
