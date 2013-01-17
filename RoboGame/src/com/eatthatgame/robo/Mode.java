@@ -11,6 +11,10 @@ public class Mode {
     int currentContenderID;
     ArrayList<Contender> contenders;
     ArrayList<Contender> opponents;
+    
+    protected int MAX_ROUNDS = 200;
+    protected int roundCount = 0;
+
 
     Contender a;
     Contender b;
