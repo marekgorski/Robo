@@ -24,7 +24,7 @@ public class RandomMatchUp {
             currentContenderID = (int) (Math.random()*contenders.size());
             b = (Contender) contenders.remove(currentContenderID); // then set to 1 for Boo Boo
 
-            System.out.println("Contender A: " + a.name + " vs. Contender B: " + b.name);
+            System.out.println("\nContender A: " + a.name + " vs. Contender B: " + b.name + "\n");
             System.out.println("FIGHT!");
 
             battle();
@@ -41,7 +41,7 @@ public class RandomMatchUp {
         while(a.alive() && b.alive() && roundCount < MAX_ROUNDS) {
             
             roundCount++;
-            System.out.println("Round: " + roundCount);
+            System.out.println("\n======= Round: " + roundCount + " =======");
             
             a.AI();
             b.AI();        
@@ -78,18 +78,18 @@ public class RandomMatchUp {
         
         if(roundCount < MAX_ROUNDS) {
             if(a.alive()) {
-                System.out.println(a.name + " wins by K.O. (in " + roundCount + " rounds)");
+                System.out.println("\n======= " + a.name + " wins by K.O. (in " + roundCount + " rounds) =======");
             } else if(b.alive()) {
-                System.out.println(b.name + " wins by K.O. (in " + roundCount + " rounds)");
+                System.out.println("\n======= " + b.name + " wins by K.O. (in " + roundCount + " rounds) =======");
             } else {
-                System.out.println("Mutual Annihilation, both contenders are dead after " + roundCount + " rounds)");
+                System.out.println("\nMutual Annihilation, both contenders are dead after " + roundCount + " rounds)");
             }
         } else {
-            System.out.println("=======MAX Rounds Reached=======");
+            System.out.println("\n=======MAX Rounds Reached=======");
             if(a.getHealth() > b.getHealth()) {
-                System.out.println(a.name + " wins by jury decision (in MAX " + roundCount + " rounds)");
+                System.out.println("\n======= " + a.name + " wins by jury decision (in MAX " + roundCount + " rounds) =======");
             } else {
-                System.out.println(b.name + " wins by jury decision (in MAX " + roundCount + " rounds)");
+                System.out.println("\n======= " + b.name + " wins by jury decision (in MAX " + roundCount + " rounds) =======");
             }
         }
     }

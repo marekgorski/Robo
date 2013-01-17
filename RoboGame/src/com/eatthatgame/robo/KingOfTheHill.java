@@ -77,7 +77,22 @@ public class KingOfTheHill
                     battle();
                 }
             }
-        }
+        }                      
+                 
+        for(int i = 0; i < contenders.size(); i++) {            
+            
+            int tempWinner;
+            Contender winner;
+            
+            if(contenders.get(i).totalWon > contenders.get(1).totalWon )
+            {              
+                winner = contenders.get(i);
+            } else {
+                winner = contenders.get(1);
+            }
+            
+            System.out.println("The King of the Hill is " + winner.name + " with a total of: " + winner.totalWon);
+        } 
     }
     
      public void battle() 

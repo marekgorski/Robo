@@ -9,15 +9,25 @@ public class RoboGame {
         
         ArrayList<Contender> leagueContenders = getContenders();
         
-        CareerMode careerMode = new CareerMode(leagueContenders);
-        careerMode.matchUp();
+        //CareerMode careerMode = new CareerMode(leagueContenders);
+        //careerMode.matchUp();
         
         //LastManStanding lastManStanding = new LastManStanding(leagueContenders);
         //lastManStanding.matchUp();
         
         //RandomMatchUp randomMatchUp = new RandomMatchUp(leagueContenders);
         //randomMatchUp.matchUp();
-
+        
+        //TeamDeathmatch dm = new TeamDeathmatch(leagueContenders);
+        //dm.matchUp();
+        
+        //RandomMatchUp2v2 rand2v2 = new RandomMatchUp2v2(leagueContenders);
+        //rand2v2.matchUp();
+        
+        KingOfTheHill koth = new KingOfTheHill(leagueContenders);
+        koth.matchUp();
+        
+        
 
         
     }
@@ -25,8 +35,8 @@ public class RoboGame {
     private static ArrayList<Contender> getContenders() {
         ArrayList<Contender> contenders = new ArrayList<Contender>();
         Contender contender;
-        contender = new Adam();
-        contenders.add(contender);
+        //contender = new Adam();
+        //contenders.add(contender);
         contender = new BooBoo();
         contenders.add(contender);
         contender = new HugoRobo();
