@@ -14,9 +14,7 @@ public class Mode {
 
     Contender a;
     Contender b;
-    
-    protected int roundCount = 0;
-    protected int MAX_ROUNDS = 200;
+
     
     /**
     * This constructor populates the contenders with the ArrayList passed into it
@@ -58,35 +56,22 @@ public class Mode {
     * it checks the totalWon values that each Contender has
     * based on which it selects the Contender with the highest value
     */
-    public Contender getWinner() {
+ public Contender getWinner() {
         
-        Contender winner;
-        Contender c00 = contenders.get(0);
-        Contender c01 = contenders.get(1);
-        Contender c02 = contenders.get(2);
-        Contender c03 = contenders.get(3);
+        Contender winner = contenders.get(0);
+        
+                for(int i=1; i<contenders.size(); i++) {
 
-       
-        if(c00.totalWon > c01.totalWon) {
-            winner = c00;
-        } else {
-            winner = c01;
+                if(contenders.get(i).totalWon >= winner.totalWon) {
+                    winner = contenders.get(i);
+                } else {
+                    // do nothing
+                }
         }
-        
-        if(winner.totalWon > c02.totalWon) {
-            // winner doesn't change
-        } else {
-            winner = c02;
-        }
-        
-        if(winner.totalWon > c03.totalWon) {
-            // winner doesn't change
-        } else {
-            winner = c03;
-        }
-        
-        // TODO - extend code to include all contenders
         
         return winner;
+        // TODO - extend code to include all contenders - DONE
+        
     }
 }
+
