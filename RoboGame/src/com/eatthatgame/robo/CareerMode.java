@@ -2,19 +2,13 @@ package com.eatthatgame.robo;
 
 import java.util.ArrayList;
 
-public class CareerMode {
-    int currentContenderID;
-    ArrayList<Contender> contenders;
-    ArrayList<Contender> opponents;
-    Contender a;
-    Contender b;
+public class CareerMode extends Mode{
     
     public CareerMode(ArrayList<Contender> contendersList) {
-        currentContenderID = 0;
-        contenders = new ArrayList<Contender>(contendersList);
-        opponents = new ArrayList<Contender>(contenders);
+        super(contendersList);
     }
     
+    @Override
     public void matchUp() {
         System.out.println("=========================================");
         System.out.println("=======Career Mode Match Up Begins=======");
@@ -58,11 +52,12 @@ public class CareerMode {
 
     }
     
+    @Override
     public void battle() {
         a.setHealth(100);
         b.setHealth(100);
         
-int roundCount = 0;
+        int roundCount = 0;
         int MAX_ROUNDS = 200;
         while(a.alive() && b.alive() && roundCount < MAX_ROUNDS) {
             
@@ -128,7 +123,10 @@ int roundCount = 0;
                 b.totalWon++;
             }
         }
-        
+        System.out.println("==========================");
+        System.out.println("========THE WINNER========");
+        System.out.println("          " + getWinner().name);
+        System.out.println("==========================");
     }
 
 }
