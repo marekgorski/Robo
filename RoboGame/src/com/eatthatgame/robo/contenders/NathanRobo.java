@@ -32,17 +32,22 @@ public class NathanRobo extends Contender {
         
         if( RoboHealth < 75 ) {
             System.out.println(name + " Attacks!");
+            this.attackPower = 35;
+            this.defensePower = 5;
             attack = true;
             
         }
             
         else if( RoboHealth > 75) {
             System.out.println(name + " Attacks!");
+            this.attackPower = 40;
+            this.defensePower = 5;
             attack = true;
         }
         else if( RoboHealth > 40) {
             System.out.println(name + " Attacks!");
-            this.attackPower = 32;
+            this.attackPower = 50;
+            this.defensePower = 0;
             attack = true;
         }
         
@@ -55,8 +60,8 @@ public class NathanRobo extends Contender {
 
         else {
             System.out.println(name + " Defends!");
-            this.attackPower = 10;
-            this.defensePower = 35;
+            this.attackPower = 5;
+            this.defensePower = 40;
             attack = false;
         }
         
