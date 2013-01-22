@@ -21,7 +21,7 @@ public class TeamDeathmatch extends Mode{
         super(contendersList);
     }
     /*
-     * The Method overrides the Mode match up method which currently has nothing in it.
+     * This Method overrides the Mode match up method which currently has nothing in it.
      * this method gets four random contenders and adds them to the teams.
      */
    @Override  
