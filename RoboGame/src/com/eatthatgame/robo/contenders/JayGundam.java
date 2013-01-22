@@ -8,33 +8,29 @@ public class JayGundam extends Contender {
     {
         this.name = "Freedom";
         this.age = 1;
-        this.attackPower = 40; // DEATH BEAM!!!! Available for kids ages 8+
+        this.attackPower = 20;
         this.defensePower = 10;
     }
     
     @Override
     public void AI()
     {
-        if(getHealth() > 80)
+        if(getHealth() > 40)
         {
+            this.attackPower = 50;
+            this.defensePower = 0;
             attack = true;
         }
-        else if(getHealth() < 80 && getHealth() > 50)
+        else if(getHealth() < 40 && getHealth() > 20)
         {
-            this.attackPower = 20;
-            this.defensePower = 20;
-            attack = true;
-        }
-        else if (getHealth() < 50 && getHealth() > 10)
-        {
-            this.defensePower = 30;
+            this.attackPower = 0;
+             this.defensePower = 40;
             attack = false;
         }
-        else if (getHealth() < 10 && getHealth() > 1)
+        else if(getHealth() < 20 && getHealth() > 1)
         {
-            //Last stand mode, activated in occurence of extremely low health.
-            attackPower = 50;
-            defensePower = 0;
+            this.attackPower = 50;
+            this.defensePower = 0;
             attack = true;
         }
     }
