@@ -8,7 +8,7 @@ public class JayGundam extends Contender {
     {
         this.name = "Freedom";
         this.age = 1;
-        this.attackPower = 18; // DEATH BEAM!!!! Available for kids ages 8+
+        this.attackPower = 20;
         this.defensePower = 10;
     }
     
@@ -17,20 +17,38 @@ public class JayGundam extends Contender {
     {
         if(getHealth() > 40)
         {
-            //System.out.println(name + " attacks!");
+            this.attackPower = 50;
+            this.defensePower = 0;
             attack = true;
         }
-        else if (getHealth() < 40 && getHealth() > 20)
+        else if(getHealth() < 40 && getHealth() > 20)
         {
-            //System.out.println(name + " defends!");
+            this.attackPower = 0;
+             this.defensePower = 40;
             attack = false;
         }
-        else if (getHealth() < 5 && getHealth() > 1)
+        else if(getHealth() < 20 && getHealth() > 1)
         {
-            //System.out.println(name + " is self destructing!!!");
-            attackPower = 40;
+            this.attackPower = 50;
+            this.defensePower = 0;
             attack = true;
         }
     }
+    
+    /*
+    @Override
+    public void AI(Contender opponent) 
+    {
+        if(getHealth() > opponent.getHealth()) {
+            attack = true;
+        } else {
+            attack = false;
+        }
+        if(opponent.("Omega")) {
+            attack = true;
+        } else {
+            attack = false;
+        }
+    }*/
     
 }
