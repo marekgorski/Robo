@@ -46,9 +46,6 @@ public class TeamDeathmatch extends Mode{
         (teams.get(1)).add(c); 
         (teams.get(1)).add(d);
         
-        for(int i = 0; i < teams.size(); i++) {
-            System.out.println((teams.get(i)).getName() + " : " + (teams.get(i)).show() );
-        }
         battle();
     }
    /*
