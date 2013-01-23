@@ -31,7 +31,7 @@ public class NathanRobo extends Contender {
         int RoboHealth = getHealth();
         
         if( RoboHealth < 75 ) {
-            System.out.println(name + " Attacks!");
+            //System.out.println(name + " Attacks!");
             this.attackPower = 35;
             this.defensePower = 5;
             attack = true;
@@ -39,27 +39,27 @@ public class NathanRobo extends Contender {
         }
             
         else if( RoboHealth > 75) {
-            System.out.println(name + " Attacks!");
+            //System.out.println(name + " Attacks!");
             this.attackPower = 40;
             this.defensePower = 5;
             attack = true;
         }
         else if( RoboHealth > 40) {
-            System.out.println(name + " Attacks!");
+            //System.out.println(name + " Attacks!");
             this.attackPower = 50;
             this.defensePower = 0;
             attack = true;
         }
         
         else if( RoboHealth > 20) {
-            System.out.println(name + " Defends!");
+            //System.out.println(name + " Defends!");
             this.attackPower = 5;
             this.defensePower = 40;
             attack = false;
         }
 
         else {
-            System.out.println(name + " Defends!");
+            //System.out.println(name + " Defends!");
             this.attackPower = 5;
             this.defensePower = 40;
             attack = false;
@@ -83,12 +83,12 @@ public class NathanRobo extends Contender {
     public boolean changeMove(){
     boolean lastMove = false;
     if(lastMove = true){
-            System.out.println(name + " Defends!");
+            //System.out.println(name + " Defends!");
             lastMove = false;
             return false;
         }
         else{
-            System.out.println(name + " Attacks!"); 
+            //System.out.println(name + " Attacks!"); 
             lastMove = true;
             return true;
         }
