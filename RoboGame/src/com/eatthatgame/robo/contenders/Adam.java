@@ -23,14 +23,14 @@ public class Adam extends Contender
     {
         
         if(getHealth() >= 60){
-            System.out.println(name + " attacks!");
+            //System.out.println(name + " attacks!");
             attack = true;
             attackPower = 60;
             defensePower = 0;
         }
         
         else {
-            System.out.println(name + " defends!");
+            //System.out.println(name + " defends!");
             attack = false;
             attackPower = 0;
             defensePower = 20;
@@ -45,21 +45,21 @@ public class Adam extends Contender
     {
         
         if(getHealth() >= 60 && opponent.getHealth() >= 60){
-            System.out.println(name + " attempts to excecute it's opponent!");
+            //System.out.println(name + " attempts to excecute it's opponent!");
             attack = true;
             attackPower = opponent.getHealth();
             defensePower = 0;
         }
         
         else if (getHealth() < 60) {
-            System.out.println(name + " defends!");
+            //System.out.println(name + " defends!");
             attack = false;
             attackPower = 0;
             defensePower = 20;
         }
         
         else {
-            System.out.println(name + " attacks!");
+            //System.out.println(name + " attacks!");
             attack = true;
             attackPower = 60;
             defensePower = 0;
