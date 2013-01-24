@@ -25,7 +25,7 @@ public class Adam extends Contender
         if(getHealth() >= 60){
             //System.out.println(name + " attacks!");
             attack = true;
-            attackPower = 60;
+            attackPower = 70;
             defensePower = 0;
         }
         
