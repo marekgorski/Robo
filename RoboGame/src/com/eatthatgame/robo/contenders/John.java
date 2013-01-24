@@ -18,19 +18,19 @@ public class John extends Contender
     {
         if(getHealth() > 80)
         {
-            System.out.println(name + " uses rocket grab!");
+            //System.out.println(name + " uses rocket grab!");
             attack = true;
         }
         
         else if(getHealth() < 60 && getHealth() > 40)
         {
-            System.out.println(name + " overdrives its defenses!");
+            //System.out.println(name + " overdrives its defenses!");
             attack = false;
         }
         
         else if(getHealth() < 25)
         {
-            System.out.println(name + " uses mana barrier!");
+            //System.out.println(name + " uses mana barrier!");
             attackPower = 5;
             defensePower = 32;
             attack = false;
@@ -38,7 +38,7 @@ public class John extends Contender
         
         else
         {
-            System.out.println(name + " does it's Power Fist and Static Field Combo Wumbo!");
+            //System.out.println(name + " does it's Power Fist and Static Field Combo Wumbo!");
             attack = true;
         }
     }

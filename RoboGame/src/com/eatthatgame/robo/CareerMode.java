@@ -45,6 +45,7 @@ public class CareerMode extends Mode{
                     System.out.print("\n");
                     
                     battle();
+                    System.out.println("-------------------------------------------------------");
                 }
             }
 
