@@ -9,8 +9,8 @@ import java.util.ArrayList;
  * Game mode rules:
  * Two randomly chosen contenders fight against another two randomly chosen contenders.
  * Contender a fights Contender b while Contender a2 fights Contender b2
- * Once a contender is defeated the opponent will attack the remaining robot
- * For a team to win a single contender has to be KO'd in the opposing team
+ * If a contender is defeated the opposing team will both target the remaining bot
+ * For a team to win both opposing contenders have to be KO'd 
  */
 public class RandomMatchUp2v2 {
     public RandomMatchUp2v2(ArrayList contenders) {
