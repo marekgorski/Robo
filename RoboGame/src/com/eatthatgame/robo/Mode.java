@@ -21,19 +21,26 @@ public class Mode {
     
     ArrayList<Team> teams;
     Team team;
+    
+    int numOfGroups;
+    int numOfContendersPerGroup;
+    
+    ArrayList<Group> groups;
+    Group group;
 
     /**
     * This constructor populates the contenders with the ArrayList passed into it
     * The constructor stores the list inside of contenders, copies it over to the opponents
     * and sets the index to 0 for the currentContenderID
     *
-    * @param contendersList   contains the Contenders sent in as an ArrayListntender by the index of the contenders ArrayList
+    * @param contendersList   contains the Contenders sent in as an ArrayListener by the index of the contenders ArrayList
     */
     public Mode(ArrayList<Contender> contendersList) {
         currentContenderID = 0;
         contenders = new ArrayList<Contender>(contendersList);
         opponents = new ArrayList<Contender>(contenders);
         teams = new ArrayList<Team>();
+        groups = new ArrayList<Group>();
     }
 
     /**
@@ -147,6 +154,78 @@ public class Mode {
             return members.size();
         }
         
+    }
+    
+    /**
+    * 
+    *
+    * @author Hugo
+    */
+
+    protected static class Group {
+        
+        private ArrayList<Contender> gPlayers;
+        private String gNumber;
+        private int gSize;
+        
+        /**
+        * This constructor needs to be passed a String, which represents the team number,
+        *  the reason for this is later explained, and finally an integer with the group
+        *  size
+        */
+        public Group(String groupNumber, int groupSize) {
+            gNumber = groupNumber;
+            gSize = groupSize;
+            
+            if (gSize == 5){
+                gPlayers = new ArrayList<Contender>(5);
+            } else if (gSize == 4 ) {
+                gPlayers = new ArrayList<Contender>(4);                
+            } else if (gSize == 3 ) {
+                gPlayers = new ArrayList<Contender>(3);                
+            }            
+        }
+        /**
+        * This method allows you to add Contenders as players to the group
+        */
+        public void add(Contender gPlayer) {
+            gPlayers.add(gPlayer);
+        }
+        
+        /**
+        * This method returns a String with the group number
+        */
+        public String getGNumber(){
+            return gNumber;
+        }
+        
+        /**
+        * This method returns a specific Contender from the gPlayers
+        * as specified by the integer passed into the method
+        */
+        public Contender member(int index) {
+            return gPlayers.get(index);
+        }
+        
+        /**
+        * This method returns a String that contains all the names
+        * of the group gPlayers (Contenders) that are part of this group
+        */
+        public String show() {
+            
+            String s = "";
+            int i;
+            for(i = 0; i < gPlayers.size(); i++) {
+                s += gPlayers.get(i).name;
+                if(i < (gPlayers.size()-2)) {
+                    s += ", ";
+                } else if(i == (gPlayers.size()-2)) {
+                    s += " and ";
+                }
+            }
+            return s;
+        }
+            
     }
 }
 
