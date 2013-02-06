@@ -15,27 +15,27 @@ public class JayGundam extends Contender {
     @Override
     public void AI()
     {
-        if(getHealth() > 40)
+        if(getHealth() > 70)
         {
-            this.attackPower = 50;
+            this.attackPower = 47;
             this.defensePower = 0;
             attack = true;
         }
-        else if(getHealth() < 40 && getHealth() > 20)
+        else if(getHealth() < 70 && getHealth() > 50)
+        {
+            this.attackPower = 57;
+            this.defensePower = 0;
+            attack = true;
+        }
+        else if(getHealth() < 50 && getHealth() > 20)
         {
             this.attackPower = 0;
-             this.defensePower = 40;
+            this.defensePower = 20;
             attack = false;
-        }
-        else if(getHealth() < 20 && getHealth() > 1)
-        {
-            this.attackPower = 50;
-            this.defensePower = 0;
-            attack = true;
         }
     }
     
-    /*
+   
     @Override
     public void AI(Contender opponent) 
     {
@@ -44,11 +44,6 @@ public class JayGundam extends Contender {
         } else {
             attack = false;
         }
-        if(opponent.("Omega")) {
-            attack = true;
-        } else {
-            attack = false;
-        }
-    }*/
+    }
     
 }
