@@ -9,8 +9,8 @@ public class RoboGame {
         
         ArrayList<Contender> leagueContenders = getContenders();
         
-        CareerMode careerMode = new CareerMode(leagueContenders);
-        careerMode.matchUp();
+        //CareerMode careerMode = new CareerMode(leagueContenders);
+        //careerMode.matchUp();
         
         //LastManStanding lastManStanding = new LastManStanding(leagueContenders);
         //lastManStanding.matchUp();
@@ -29,6 +29,9 @@ public class RoboGame {
                
         //TaniaLastManStanding tm = new TaniaLastManStanding(leagueContenders);
         //tm.matchUp();
+        
+        Tournament tournamentMode = new Tournament(leagueContenders);
+        tournamentMode.matchUp();        
 
     }
 
