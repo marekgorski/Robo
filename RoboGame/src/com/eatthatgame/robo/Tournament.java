@@ -12,7 +12,7 @@ public class Tournament extends Mode{
     
     public void matchUp(){
         
-            System.out.println("===================================================");
+            System.out.println("\n===================================================");
             System.out.println("==========Tournament Mode Match Up Begins==========");
             System.out.println("===================================================");
         
