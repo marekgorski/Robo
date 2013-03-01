@@ -1,6 +1,7 @@
 package com.eatthatgame.robo;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /*
  * 
@@ -31,15 +32,27 @@ public class TeamDeathmatch extends Mode{
      teams.add(team);
      team = new Mode.Team("Blue Team");
      teams.add(team);
+     
+     JOptionPane.showMessageDialog( null,"Select the Robots to be on each team."+"\n"
+             
+             +"Use only numbers between 0 and 7"+"\n"+
+             
+             "(Awesom-O = 0) (Boo Boo = 1) (Omega = 2) (Freedom = 3)"+"\n"+
+             "(Blitz = 4)    (Max = 5)     (Tania = 6) (Yogi Bear = 7)");
+     
+     int UserInputA = Integer.parseInt(
+          JOptionPane.showInputDialog( "Red Team Member 1"));
+     int UserInputB = Integer.parseInt(
+          JOptionPane.showInputDialog( "Red Team Member 2"));
+     int UserInputC = Integer.parseInt(
+          JOptionPane.showInputDialog( "Blue Team Member 1"));
+     int UserInputD = Integer.parseInt(
+          JOptionPane.showInputDialog( "Blue Team Member 2"));
         
-        randomContenderID = (int) (Math.random()*contenders.size());
-        Contender a = (Contender) contenders.remove(randomContenderID); 
-        randomContenderID = (int) (Math.random()*contenders.size());
-        Contender b = (Contender) contenders.remove(randomContenderID);
-        randomContenderID = (int) (Math.random()*contenders.size());
-        Contender c = (Contender) contenders.remove(randomContenderID);
-        randomContenderID = (int) (Math.random()*contenders.size());
-        Contender d = (Contender) contenders.remove(randomContenderID);
+        Contender a = (Contender) contenders.remove(UserInputA); 
+        Contender b = (Contender) contenders.remove(UserInputB);
+        Contender c = (Contender) contenders.remove(UserInputC);
+        Contender d = (Contender) contenders.remove(UserInputD);
         
         (teams.get(0)).add(a); 
         (teams.get(0)).add(b); 
@@ -50,8 +63,8 @@ public class TeamDeathmatch extends Mode{
     }
    /*
     * This method override the mode battle method which currently has nothing in it.
-    * TODO- Make it so both team members must fall for the game to end.
-    * At the moment only one has to fall and the game will end.
+    * I have updated the battle method so that both members of the team must fall 
+    * for the game to end.
     */
       @Override
               public void battle(){
@@ -77,19 +90,26 @@ public class TeamDeathmatch extends Mode{
         
         roundCount = 0;
         MAX_ROUNDS = 400;
-        while(a.alive() && b.alive()  && c.alive() && d.alive() && roundCount < MAX_ROUNDS) {
+        while(roundCount < MAX_ROUNDS) {
+
             
+            if(a.alive() || b.alive()){
+                if(c.alive() || d.alive()){
+                    
+                  
             roundCount++;
-            System.out.println("Round: " + roundCount);
+            System.out.println("\n======= Round: " + roundCount + " =======");;
             
             a.AI();
             b.AI();
             c.AI();
             d.AI();
             
+           // checks if the round cout is even. If it is a even number then its A vs C and B vs D. 
+           //If its odd then its A vs D and B vs C.
+        if(roundCount %2 == 0){
             
-            
-            if(a.attack && b.attack){
+           if(a.attack && b.attack){
                 if(c.attack && d.attack){
                     System.out.println("Both teams attack!");
                     System.out.println(a.name + " hits " + c.name + " for: " + a.attack());
@@ -123,37 +143,84 @@ public class TeamDeathmatch extends Mode{
                     a.hit(0);
                     b.hit(0);
                     c.hit(0);
-                    d.hit(0);
+                    d.hit(0); 
+        }    
+            
                     
                 }
-            }
-
+            }else{
+            if(a.attack && b.attack){
+                if(c.attack && d.attack){
+                    System.out.println("Both teams attack!");
+                    System.out.println(a.name + " hits " + d.name + " for: " + a.attack());
+                    System.out.println(c.name + " hits " + b.name + " for: " + c.attack());
+                    System.out.println(b.name + " hits " + c.name + " for: " + b.attack());
+                    System.out.println(d.name + " hits " + a.name + " for: " + d.attack());
+                    d.hit(a.attack());
+                    c.hit(b.attack());
+                    b.hit(c.attack());
+                    a.hit(d.attack());
+                } else {
+                    System.out.println("Red Team attacks and Blue Team defends");
+                    System.out.println(a.name + " hits " + d.name + " for: " + (a.attack()-d.defend()));
+                    System.out.println(b.name + " hits " + c.name + " for: " + (b.attack()-c.defend()));
+                    d.hit(a.attack()-d.defend());
+                    c.hit(b.attack()-c.defend());
+                    a.hit(0);
+                    b.hit(0);
+                }
+            } else {
+                if(c.attack && d.attack){
+                    System.out.println("Red Team defends and Blue Team attacks");
+                    System.out.println(c.name + " hits " + b.name + " for: " + (c.attack()-b.defend()));
+                    System.out.println(d.name + " hits " + a.name + " for: " + (d.attack()-a.defend()));
+                    c.hit(0);
+                    d.hit(0);
+                    b.hit(c.attack()-b.defend());
+                    a.hit(d.attack()-a.defend());
+                } else {
+                    // both defend only energyCheck runs
+                    a.hit(0);
+                    b.hit(0);
+                    c.hit(0);
+                    d.hit(0);
+        }
+                //print out health
             System.out.println(a.name + " health: " + a.getHealth());
             System.out.println(b.name + " health: " + b.getHealth());
             System.out.println(c.name + " health: " + c.getHealth());
             System.out.println(d.name + " health: " + d.getHealth());
+            
+            }
+        }
+            
+            
         }
         
-                  
-
-        if(roundCount < MAX_ROUNDS) {
-            if(a.alive() && b.alive()) {
-                System.out.println( a.name + " and " + b.name+ " wins by K.O. (in " + roundCount + " rounds)");
-            } else if(c.alive() && d.alive()) {
-                System.out.println(c.name + " and " + d.name+ " wins by K.O. (in " + roundCount + " rounds)");
+       
+          }
+        }
+        // checks if the maximum rounds have been reached and determines the winner by adding up their health.
+         if(roundCount < MAX_ROUNDS) {
+            if(a.alive() ==  false && b.alive() == false) {
+                System.out.println( c.name + " and " + d.name+ " wins by K.O. (in " + roundCount + " rounds)");
+            } else if(c.alive()==false && d.alive()==false) {
+                System.out.println(a.name + " and " + b.name+ " wins by K.O. (in " + roundCount + " rounds)");
             } else {
                 System.out.println("Mutual Annihilation, both teams are dead after " + roundCount + " rounds)");
             }
         } else {
             System.out.println("=======MAX Rounds Reached=======");
-            if(a.getHealth() > b.getHealth()) {
+            if(a.getHealth()+ b.getHealth() > c.getHealth()+ d.getHealth()) {
                 System.out.println(a.name + " and " + b.name+ " wins by jury decision (in MAX " + roundCount + " rounds)");
             } else {
                 System.out.println(c.name + " and " + d.name+ " wins by jury decision (in MAX " + roundCount + " rounds)");
             }
-        }
-     }
+    
+      }
+   }
+}
+     
         
     
     
-   }

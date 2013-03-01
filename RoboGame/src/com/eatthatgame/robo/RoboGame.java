@@ -18,14 +18,14 @@ public class RoboGame {
         //RandomMatchUp randomMatchUp = new RandomMatchUp(leagueContenders);
         //randomMatchUp.matchUp();
         
-        //TeamDeathmatch dm = new TeamDeathmatch(leagueContenders);
-        //dm.matchUp();
+        TeamDeathmatch dm = new TeamDeathmatch(leagueContenders);
+        dm.matchUp();
         
         //RandomMatchUp2v2 rand2v2 = new RandomMatchUp2v2(leagueContenders);
         //rand2v2.matchUp();
         
-        TaniaLastManStanding tm = new TaniaLastManStanding(leagueContenders);
-        tm.matchUp();
+        //TaniaLastManStanding tm = new TaniaLastManStanding(leagueContenders);
+        //tm.matchUp();
         
         
 
