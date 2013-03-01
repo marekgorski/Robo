@@ -24,7 +24,7 @@ public class NathanRobo extends Contender {
 
     /**
      * overriding the default AI with a better AI that changes the whether it attacks or defends and the attack strength and 
-     *   defence strength according to the robots health during the current round.
+     *   defense strength according to the robots health during the current round.
      */
     @Override
     public void AI(){
@@ -32,35 +32,35 @@ public class NathanRobo extends Contender {
         
         if( RoboHealth < 75 ) {
             System.out.println(name + " Attacks!");
-            this.attackPower = 35;
-            this.defensePower = 5;
+            this.attackPower = 55;
+            this.defensePower = 0;
             attack = true;
             
         }
             
         else if( RoboHealth > 75) {
             System.out.println(name + " Attacks!");
-            this.attackPower = 40;
-            this.defensePower = 5;
-            attack = true;
-        }
-        else if( RoboHealth > 40) {
-            System.out.println(name + " Attacks!");
             this.attackPower = 50;
             this.defensePower = 0;
             attack = true;
         }
-        
-        else if( RoboHealth > 20) {
-            System.out.println(name + " Defends!");
-            this.attackPower = 5;
+        else if( RoboHealth > 40) {
+            System.out.println(name + " defends!");
+            this.attackPower = 0;
             this.defensePower = 40;
             attack = false;
+        }
+        
+        else if( RoboHealth > 20) {
+            System.out.println(name + " Attacks!");
+            this.attackPower = 30;
+            this.defensePower = 0;
+            attack = true;
         }
 
         else {
             System.out.println(name + " Defends!");
-            this.attackPower = 5;
+            this.attackPower = 0;
             this.defensePower = 40;
             attack = false;
         }

@@ -12,8 +12,7 @@ import javax.swing.JOptionPane;
  * Red Team
  * Blue Team
  * 
- * TODO- Make it so both team members must fall for the game to end.
- * At the moment only one has to fall and the game will end.
+ * 
  */
 
 public class TeamDeathmatch extends Mode{
