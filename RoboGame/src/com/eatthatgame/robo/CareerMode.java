@@ -75,21 +75,21 @@ public class CareerMode extends Mode{
             
             if(a.attack){
                 if(b.attack){
-                    //System.out.println("Both attack!");
-                    //System.out.println("A hits for: " + a.attack());
-                    //System.out.println("B hits for: " + b.attack());
+                    System.out.println("Both attack!");
+                    System.out.println("A hits for: " + a.attack());
+                    System.out.println("B hits for: " + b.attack());
                     b.hit(a.attack());
                     a.hit(b.attack());
                 } else {
-                    //System.out.println("A attacks and B defends");
-                    //System.out.println("A hits for: " + (a.attack()-b.defend()));
+                    System.out.println("A attacks and B defends");
+                    System.out.println("A hits for: " + (a.attack()-b.defend()));
                     b.hit(a.attack()-b.defend());
                     a.hit(0);
                 }
             } else {
                 if(b.attack){
-                    //System.out.println("A defends and B attacks");
-                    //System.out.println("B hits for: " + (b.attack()-a.defend()));
+                    System.out.println("A defends and B attacks");
+                    System.out.println("B hits for: " + (b.attack()-a.defend()));
                     b.hit(0);
                     a.hit(b.attack()-a.defend());
                 } else {
@@ -99,8 +99,8 @@ public class CareerMode extends Mode{
                 }
             }
 
-            //System.out.println(a.name + " health: " + a.getHealth());
-            //System.out.println(b.name + " health: " + b.getHealth());
+            System.out.println(a.name + " health: " + a.getHealth());
+            System.out.println(b.name + " health: " + b.getHealth());
         }
         
         if(roundCount < MAX_ROUNDS) {

@@ -16,6 +16,10 @@ public class Contender {
     public int totalDrawn = 0;
     public int totalLost = 0;
     
+    public int totalPoints = 0;
+    
+    
+    
     public int attack(){
         return attackPower;
     }
@@ -31,7 +35,6 @@ public class Contender {
         health = health - damage;
         //System.out.println(name + " 3. Health after damage:" + health);
     }
-    
     
     public boolean alive(){
         if(health > 0) {
