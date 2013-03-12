@@ -60,11 +60,78 @@ public class Mode {
     * which the matchUp method should keep track of
     */
     public void battle() {
-        System.out.println("=========================================");
-        System.out.println("======Mode Battle Method Undefined=======");
-        System.out.println("=========================================");
+        
+        a.setHealth(100);
+        b.setHealth(100);
+        roundCount = 0;
+        
+        while(a.alive() && b.alive() && roundCount < MAX_ROUNDS) {
+            
+            roundCount++;
+            //System.out.println("Round: " + roundCount);
+            
+            a.AI();
+            b.AI();        
+            
+            if(a.attack){
+                if(b.attack){
+//                    System.out.println("Both attack!");
+//                    System.out.println("A hits for: " + a.attack());
+//                    System.out.println("B hits for: " + b.attack());
+                    b.hit(a.attack());
+                    a.hit(b.attack());
+                } else {
+//                    System.out.println("A attacks and B defends");
+//                    System.out.println("A hits for: " + (a.attack()-b.defend()));
+                    b.hit(a.attack()-b.defend());
+                    a.hit(0);
+                }
+            } else {
+                if(b.attack){
+//                    System.out.println("A defends and B attacks");
+//                    System.out.println("B hits for: " + (b.attack()-a.defend()));
+                    b.hit(0);
+                    a.hit(b.attack()-a.defend());
+                } else {
+                    // both defend only energyCheck runs
+                    b.hit(0);
+                    a.hit(0);
+                }
+            }
+
+//            System.out.println(a.name + " health: " + a.getHealth());
+//            System.out.println(b.name + " health: " + b.getHealth());
+        }
+        
+        if(roundCount < MAX_ROUNDS) {
+            if(a.alive()) {
+                System.out.println(a.name + " wins by K.O. (in " + roundCount + " rounds)");
+                a.totalWon++;
+                b.totalLost++;
+            } else if(b.alive()) {
+                System.out.println(b.name + " wins by K.O. (in " + roundCount + " rounds)");
+                a.totalLost++;
+                b.totalWon++;
+            } else {
+                System.out.println("Mutual Annihilation, both contenders are dead after " + roundCount + " rounds");
+                a.totalDrawn++;
+                b.totalDrawn++;
+            }
+        } else {
+            System.out.println("== Maximum Rounds Reached");
+            if(a.getHealth() > b.getHealth()) {
+                System.out.println(a.name + " wins by jury decision (in MAX " + roundCount + " rounds)");
+                a.totalWon++;
+                b.totalLost++;
+            } else {
+                System.out.println(b.name + " wins by jury decision (in MAX " + roundCount + " rounds)");
+                a.totalLost++;
+                b.totalWon++;
+            }
+        }
+        
     }
-    
+        
     /**
     * This method returns the winning Contender
     * it checks the totalWon values that each Contender has
@@ -162,15 +229,15 @@ public class Mode {
     * @author Hugo
     */
 
-    protected static class Group {
+    protected static class Group extends ArrayList{
         
         private ArrayList<Contender> gPlayers;
         private String gNumber;
         private int gSize;
         
         /**
-        * This constructor needs to be passed a String, which represents the team number,
-        *  the reason for this is later explained, and finally an integer with the group
+        * This constructor needs to be passed a String, which represents the group number,
+        *  the reason for it to be a String is later explained, and finally an integer with the group
         *  size
         */
         public Group(String groupNumber, int groupSize) {
@@ -192,6 +259,16 @@ public class Mode {
             gPlayers.add(gPlayer);
         }
         
+        public void remove(Contender gPlayer) {
+            gPlayers.remove(gPlayer);
+        }
+        
+        public void swap(Group reArrangedGroupArray, int contenderSwapIndex1, int contenderSwapIndex2) {
+           Object temp = reArrangedGroupArray.get( contenderSwapIndex2 ) ;
+           reArrangedGroupArray.set( contenderSwapIndex2, reArrangedGroupArray.get( contenderSwapIndex1 ) ) ; 
+           reArrangedGroupArray.set( contenderSwapIndex1, temp ) ; 
+        }
+        
         /**
         * This method returns a String with the group number
         */
@@ -201,7 +278,7 @@ public class Mode {
         
         /**
         * This method returns a specific Contender from the gPlayers
-        * as specified by the integer passed into the method
+        * as specified by the integer argument passed into the method
         */
         public Contender member(int index) {
             return gPlayers.get(index);
@@ -211,7 +288,7 @@ public class Mode {
         * This method returns a String that contains all the names
         * of the group gPlayers (Contenders) that are part of this group
         */
-        public String show() {
+        public String showG() {
             
             String s = "";
             int i;
