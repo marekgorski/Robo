@@ -13,6 +13,10 @@ import java.util.ArrayList;
  * For a team to win both opposing contenders have to be KO'd 
  */
 public class RandomMatchUp2v2 {
+    
+    int roundCount = 0;
+    int MAX_ROUNDS = 200;
+    
     public RandomMatchUp2v2(ArrayList contenders) {
         int randomContenderID;
         randomContenderID = (int) (Math.random()*contenders.size());
@@ -27,8 +31,7 @@ public class RandomMatchUp2v2 {
         System.out.println("\nTeam A: " + a.name + " and " + a2.name + " vs. Team B: " + b.name + " and " +b2.name + "\n");
         System.out.println("FIGHT!");
         
-        int roundCount = 0;
-        int MAX_ROUNDS = 200;
+        
         while(a.alive() && a2.alive() && b.alive() && b2.alive() && roundCount < MAX_ROUNDS) {
             
             roundCount++;
